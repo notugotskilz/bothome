@@ -1,22 +1,19 @@
 {
-    "token": "MTI4NjE2MTM1OTIwNTE3NTMxNg.GAe668.GxUPVKUwLj63Z0hKNN6MKrPlyYybgmF4NX6yvs",
-    "client_id": "1286161359205175316",
-    "client_secret": "G0xSIEBlcNq6jUFPULjT07ipHeagMWOD",
-    "redirect_uri": "http://127.0.0.1:8000",
-    "scope": "identify%20guilds%20guilds.join%20email",
+    "token": "${TOKEN}",
+    "client_id": "${CLIENT_ID}",
+    "client_secret": "${CLIENT_SECRET}",
+    "redirect_uri": "${REDIRECT_URI}",
+    "scope": "${SCOPE}",
 
-    "admin_guilds": [1111870619814998066],
-    "owners": [1114211215049240646],
-    "log_channel": 1286163203923120139,
+    "admin_guilds": [${ADMIN_GUILDS}],
+    "owners": [${OWNERS}],
+    "log_channel": ${LOG_CHANNEL},
 
-    "server_host": "0.0.0.0",
-    "server_port": 8000,
+    "server_host": "${SERVER_HOST}",
+    "server_port": ${SERVER_PORT},
 
-    "verify_guilds": {
-        "1111870619814998066": 11153125705811230821,
-        "Put your server ID here": "Put your role ID for this server here (without quotes). You can leave this dict empty for no guilds with verification system."
-    },
+    "verify_guilds": ${VERIFY_GUILDS},
 
-    "server_logging": true,
-    "available-scopes": "Available scopes: identify guilds guilds.join email connections. Separate scopes using %20"
+    "server_logging": ${SERVER_LOGGING},
+    "available-scopes": "${AVAILABLE_SCOPES}"
 }
