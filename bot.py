@@ -18,19 +18,19 @@ __title__ = "kno's authbot"
 __author__ = "knockstick"
 __version__ = "1.2"
 
-token = config['token']
-redirect_uri = config['redirect_uri']
-client_secret = config['client_secret']
-client_id = config['client_id']
-scope = config['scope']
-owners = config['owners']
-admins = config['admin_guilds']
-log_channel = config['log_channel']
+token = config['TOKEN']
+redirect_uri = config['REDIRECT_URI']
+client_secret = config['CLIENT_SECRET']
+client_id = config['CLIENT_ID']
+scope = config['SCOPE']
+owners = config['OWNERS']
+admins = config['ADMIN_GUILDS']
+log_channel = config['LOG_CHANNEL']
 
-quart_logging = config['server_logging']
+quart_logging = config['SERVER_LOGGING']
 
-server_host = config['server_host']
-server_port = config['server_port']
+server_host = config['SERVER_HOST']
+server_port = config['SERVER_PORT']
 
 if not quart_logging:
     logging.getLogger('hypercorn.access').disabled = True
