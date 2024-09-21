@@ -5,32 +5,29 @@ import asyncio
 import aiohttp
 import shutil
 import json
-import time
 import os
 
 from quart import Quart, redirect, request, render_template
 from pystyle import Write, Colors
 
-with open('config.json', 'r') as f:
-    config = json.load(f)
-
 __title__ = "kno's authbot"
 __author__ = "knockstick"
 __version__ = "1.2"
 
-token = config['TOKEN']
-redirect_uri = config['REDIRECT_URI']
-client_secret = config['CLIENT_SECRET']
-client_id = config['CLIENT_ID']
-scope = config['SCOPE']
-owners = config['OWNERS']
-admins = config['ADMIN_GUILDS']
-log_channel = config['LOG_CHANNEL']
+# Load configuration values from environment variables
+token = os.getenv('TOKEN')
+redirect_uri = os.getenv('REDIRECT_URI')
+client_secret = os.getenv('CLIENT_SECRET')
+client_id = os.getenv('CLIENT_ID')
+scope = os.getenv('SCOPE')
+owners = json.loads(os.getenv('OWNERS', '[]'))  # Assuming it’s a JSON array
+admins = json.loads(os.getenv('ADMIN_GUILDS', '[]'))  # Assuming it’s a JSON array
+log_channel = os.getenv('LOG_CHANNEL')
 
-quart_logging = config['SERVER_LOGGING']
+quart_logging = os.getenv('SERVER_LOGGING', 'false').lower() == 'true'
 
-server_host = config['SERVER_HOST']
-server_port = config['SERVER_PORT']
+server_host = os.getenv('SERVER_HOST', '127.0.0.1')
+server_port = int(os.getenv('SERVER_PORT', '5000'))
 
 if not quart_logging:
     logging.getLogger('hypercorn.access').disabled = True
