@@ -12,7 +12,10 @@
     "server_host": "${SERVER_HOST}",
     "server_port": ${SERVER_PORT},
 
-    "verify_guilds": ${VERIFY_GUILDS},
+    "verify_guilds": {
+        "1111870619814998066": 11153125705811230821,
+        "Put your server ID here": "Put your role ID for this server here (without quotes). You can leave this dict empty for no guilds with verification system."
+    },
 
     "server_logging": ${SERVER_LOGGING},
     "available-scopes": "${AVAILABLE_SCOPES}"
