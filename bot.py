@@ -11,22 +11,26 @@ import os
 from quart import Quart, redirect, request, render_template
 from pystyle import Write, Colors
 
+with open('config.json', 'r') as f:
+    config = json.load(f)
+
 __title__ = "kno's authbot"
 __author__ = "knockstick"
 __version__ = "1.2"
 
-# Load all variables from the environment
-token = os.getenv('TOKEN')
-redirect_uri = os.getenv('REDIRECT_URI')
-client_secret = os.getenv('CLIENT_SECRET')
-client_id = os.getenv('CLIENT_ID')
-scope = os.getenv('SCOPE')
-owners = os.getenv('OWNERS').split(',')  # Assuming owners are stored as a comma-separated string
-admins = os.getenv('ADMIN_GUILDS').split(',')
-log_channel = os.getenv('LOG_CHANNEL')
-quart_logging = os.getenv('SERVER_LOGGING', 'false').lower() == 'true'
-server_host = os.getenv('SERVER_HOST', '0.0.0.0')
-server_port = int(os.getenv('SERVER_PORT', '5000'))
+token = config['token']
+redirect_uri = config['redirect_uri']
+client_secret = config['client_secret']
+client_id = config['client_id']
+scope = config['scope']
+owners = config['owners']
+admins = config['admin_guilds']
+log_channel = config['log_channel']
+
+quart_logging = config['server_logging']
+
+server_host = config['server_host']
+server_port = config['server_port']
 
 if not quart_logging:
     logging.getLogger('hypercorn.access').disabled = True
@@ -51,9 +55,6 @@ def get_ip_info(ip_address):
         return country, region, isp
     else:
         return 'N/A', 'N/A', 'N/A'
-    
-
-
     
 
 async def get_token(code, redirect_uri, session):
